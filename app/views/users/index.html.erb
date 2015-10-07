@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<div class="users-index">
+    <% @users.each do |u| %>
+    <div class="user-index">
+        <div class="avatar-user-index">
+            <%= image_tag u.image %>
+        </div>
+        <div class="name-user-index">
+            <%= u.first_name + ' ' + u.last_name %>
+        </div>
+        <%= link_to 'Más', u %>
+        <%= link_to 'Editar', edit_user_path(u) %>
+        <%= link_to 'Eliminar', u, method: :delete, data: { confirm: '¿Estás seguro?'} %>
+    </div>
+    <% end %>
+    <%= link_to 'Nuevo usuario', new_user_path %>
+    <%= link_to 'Home', '/' %>
+</div>

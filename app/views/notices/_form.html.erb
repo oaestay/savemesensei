@@ -1,0 +1,35 @@
+<%= form_for(@notice) do |f| %>
+    <% if @notice.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %>, no se pudo guardar el aviso</h2>
+            <ul>
+                <% @notice.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="field">
+        <%= f.label :title %><br>
+        <%= f.text_field :title %>
+    </div>
+    <div class="field">
+        <%= f.label :message %><br>
+        <%= f.text_field :message %>
+    </div>
+    <div class="field">
+        <%= f.label :qcomments %><br>
+        <%= f.number_field :qcomments %>
+    </div>
+    <div class="field">
+        <%= f.label :created_at %><br>
+        <%= f.text_field :created_at %>
+    </div>
+    <div class="field">
+        <%= f.label :user %><br>
+        <%= f.collection_select :user_id, User.order(:username),:id,:username, include_blank: true %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

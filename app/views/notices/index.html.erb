@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<div class="notices-index">
+    <% @notices.each do |n| %>
+    <div class="notice-index">
+        <div class="title-notice-index">
+            <%= n.title %>
+        </div>
+        <div class="message-notice-index">
+            <%= n.message %>
+        </div>
+        <%= link_to 'Más', n %>
+        <%= link_to 'Editar', edit_notice_path(n) %>
+        <%= link_to 'Eliminar', n, method: :delete, data: { confirm: '¿Estás seguro?'} %>
+    </div>
+    <% end %>
+    <%= link_to 'Nuevo aviso', new_notice_path %>
+    <%= link_to 'Home', '/' %>
+</div>

@@ -1,0 +1,29 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<div class="notices-show">
+    <div class="title-notices-show">
+        <h1><%= @notice.title %></h1>
+    </div>
+    <div class="user-notices-show">
+        <p>
+            Escrito por <%= @user.first_name + ' ' + @user.last_name %>
+        </p>
+    </div>
+    <div class="message-notices-show">
+        <%= @notice.message %>
+    </div>
+    <div class="created-notices-show">
+        <p>
+            Escrito a las <%= @notice.created_at %>
+        </p>
+    </div>
+    <div class="created-notices-show">
+        <p>
+            Cantidad de comentarios: <%= @notice.qcomments %>
+        </p>
+    </div>
+    <%= link_to 'Editar', edit_notice_path(@notice) %>
+    <%= link_to 'Eliminar', @notice, method: :delete, data: { confirm: '¿Estás seguro?'} %>
+    <%= link_to 'Volver', notices_path %>
+</div>
